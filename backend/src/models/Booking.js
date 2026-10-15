@@ -1,0 +1,3 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({bookingCode:{type:String,unique:true},customer:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},bike:{type:mongoose.Schema.Types.ObjectId,ref:'Bike',required:true},pickupStation:{type:mongoose.Schema.Types.ObjectId,ref:'Station',required:true},status:{type:String,enum:['BOOKED','ACTIVE','COMPLETED','CANCELLED'],default:'BOOKED'},pickupCode:{type:String,required:true},startOdometer:Number,endOdometer:Number,distanceKm:{type:Number,default:0},amount:{type:Number,default:0},bookedAt:{type:Date,default:Date.now},collectedAt:Date,returnedAt:Date},{timestamps:true});
+export default mongoose.model('Booking',schema);
